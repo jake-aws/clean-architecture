@@ -16,8 +16,9 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideAPI():ProductAPI{
+    fun provideAPI(): ProductAPI {
         return Retrofit.Builder().baseUrl("https://dummyjson.com/")
-            .addConverterFactory(MoshiConverterFactory.create()).build().create(ProductAPI::class.java)
+            .addConverterFactory(MoshiConverterFactory.create()).build()
+            .create(ProductAPI::class.java)
     }
 }
