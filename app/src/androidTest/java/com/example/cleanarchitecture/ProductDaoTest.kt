@@ -66,11 +66,26 @@ class ProductDaoTest {
             discountPercentage = 0.9,
             id = 1
         )
-
         dao.insertProduct(productEntity)
 
         val allProductEntity = dao.getProduct(1).getOrAwaitValue()
         assertThat(allProductEntity).isEqualTo(productEntity)
+    }
+
+    @Test
+    fun deleteProductTestSuccess() = runTest {
+        val productEntity = ProductEntity(
+            brand = "brang",
+            category = "something",
+            description = "description",
+            discountPercentage = 0.9,
+            id = 1
+        )
+        dao.insertProduct(productEntity)
+        dao.deleteProduct(productEntity)
+
+        val allProductEntity = dao.getAllProducts().getOrAwaitValue()
+        assertThat(allProductEntity).doesNotContain(productEntity)
     }
 
 }

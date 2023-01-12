@@ -6,7 +6,8 @@ import com.example.cleanarchitecture.domain.repositories.ProductService
 import retrofit2.Response
 
 class ProductServiceImpl(private val productAPI: ProductAPI):ProductService {
-    override suspend fun getProductById(productID: Int): Response<Product> {
-        TODO("Not yet implemented")
+
+    override suspend fun getProductByID(productID: Int): Response<Product> {
+       return productAPI.getProductByID(productID)
     }
 }
